@@ -177,6 +177,23 @@ a {
   background: var(--color-main-soft);
 }
 
+/* 차트처럼 잘리면 안 되는 이미지는 전체를 보여줌 */
+.idea-card-thumb--contain {
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--color-border);
+}
+
+/* 정사각형에 가까운 이미지는 폭을 제한 */
+.idea-figure--narrow img {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.idea-figure--narrow figcaption {
+  text-align: center;
+}
+
 /* 상세 페이지 대표 이미지 */
 .idea-figure {
   margin: 20px 0 0;
