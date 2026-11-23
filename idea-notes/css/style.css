@@ -1,0 +1,445 @@
+/* =========================================================
+   바이브코딩 아이디어 노트 - 공통 스타일
+   모든 페이지가 이 파일 하나를 불러옵니다.
+   색을 바꾸고 싶으면 아래 :root 의 변수만 고치면 됩니다.
+   ========================================================= */
+
+/* 색상·크기 변수 */
+:root {
+  --color-main: #000080;        /* 메인 네이비 */
+  --color-main-dark: #00005c;   /* 진한 네이비 (마우스 올렸을 때) */
+  --color-main-soft: #e8e8f5;   /* 연한 네이비 배경 */
+  --color-bg: #f7f7fb;          /* 페이지 배경 */
+  --color-surface: #ffffff;     /* 카드·본문 배경 */
+  --color-text: #1f2333;        /* 기본 글자 */
+  --color-text-muted: #5f6577;  /* 보조 글자 */
+  --color-border: #dcdde6;      /* 테두리 */
+
+  /* 진행 상태 배지 색 */
+  --badge-idea-bg: #ececef;     /* 구상 중 = 회색 */
+  --badge-idea-text: #4a4d57;
+  --badge-dev-bg: #dde0f3;      /* 개발 중 = 파랑(네이비 계열) */
+  --badge-dev-text: #000080;
+  --badge-done-bg: #dcefe1;     /* 완성 = 초록 */
+  --badge-done-text: #1d6b35;
+
+  /* 난이도 배지 색 */
+  --level-bg: #fff4e0;
+  --level-text: #8a5a00;
+
+  --radius: 12px;
+  --shadow: 0 2px 6px rgba(0, 0, 60, 0.08);
+  --shadow-hover: 0 10px 24px rgba(0, 0, 60, 0.16);
+  --max-width: 1080px;
+}
+
+/* 기본 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* 한글 폰트: 시스템 폰트 우선 */
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "맑은 고딕", "Segoe UI", Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-main);
+}
+
+/* 가운데 정렬 컨테이너 */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------------------------------------------------------
+   헤더 / 내비게이션
+   --------------------------------------------------------- */
+.site-header {
+  background: var(--color-main);
+  color: #fff;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.site-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.site-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 현재 보고 있는 페이지 메뉴 강조 */
+.site-nav a.is-active {
+  background: #fff;
+  color: var(--color-main);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   본문 공통
+   --------------------------------------------------------- */
+.site-main {
+  padding: 40px 0 60px;
+}
+
+.page-intro {
+  margin-bottom: 32px;
+}
+
+.page-intro h2 {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+  color: var(--color-main);
+}
+
+.page-intro p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------
+   아이디어 카드 목록 (index.html)
+   --------------------------------------------------------- */
+.idea-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 데스크톱 3열 */
+  gap: 20px;
+}
+
+.idea-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-main);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  /* 마우스를 올리면 살짝 떠오르는 효과 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.idea-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.idea-card h3 {
+  margin: 10px 0 6px;
+  font-size: 1.15rem;
+}
+
+.idea-card-summary {
+  flex: 1; /* 요약 길이가 달라도 링크 위치를 맞춤 */
+  margin: 0 0 16px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.idea-card-link {
+  align-self: flex-start;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.idea-card-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   배지 (난이도 / 진행 상태)
+   --------------------------------------------------------- */
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.status-badge,
+.level-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.level-badge {
+  background: var(--level-bg);
+  color: var(--level-text);
+}
+
+.status-idea {
+  background: var(--badge-idea-bg);
+  color: var(--badge-idea-text);
+}
+
+.status-dev {
+  background: var(--badge-dev-bg);
+  color: var(--badge-dev-text);
+}
+
+.status-done {
+  background: var(--badge-done-bg);
+  color: var(--badge-done-text);
+}
+
+/* ---------------------------------------------------------
+   상세 페이지 / 템플릿 / 소개 공통 본문
+   --------------------------------------------------------- */
+.idea-detail,
+.content-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.idea-header {
+  padding-bottom: 20px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.idea-header h2 {
+  margin: 0 0 6px;
+  font-size: 1.7rem;
+  color: var(--color-main);
+}
+
+.idea-date {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.idea-section {
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.idea-section:last-of-type {
+  border-bottom: none;
+}
+
+.idea-section h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  color: var(--color-main);
+}
+
+.idea-section p,
+.idea-section ul,
+.idea-section ol {
+  margin: 0;
+}
+
+.idea-section ul,
+.idea-section ol {
+  padding-left: 22px;
+}
+
+/* 한 줄 요약 강조 */
+.idea-summary {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* 기술 태그 */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 3px 12px;
+  border-radius: 6px;
+  background: var(--color-main-soft);
+  color: var(--color-main);
+  font-size: 0.9rem;
+}
+
+/* AI 프롬프트 코드 블록 */
+.prompt-block {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #10123a;
+  color: #f2f2f8;
+  font-family: Consolas, "D2Coding", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap; /* 긴 줄 자동 줄바꿈 */
+}
+
+/* 템플릿 안내 문구 */
+.placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------
+   하단 페이지 이동 링크
+   --------------------------------------------------------- */
+.idea-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.idea-pager a,
+.idea-pager span {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.idea-pager a {
+  border: 1px solid var(--color-main);
+  color: var(--color-main);
+  transition: background 0.2s, color 0.2s;
+}
+
+.idea-pager a:hover {
+  background: var(--color-main);
+  color: #fff;
+}
+
+/* 이전/다음 페이지가 없을 때 */
+.idea-pager .is-disabled {
+  border: 1px solid var(--color-border);
+  color: #b0b3bf;
+}
+
+.pager-back {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   소개 페이지 단계 목록
+   --------------------------------------------------------- */
+.content-box h3 {
+  margin: 28px 0 10px;
+  color: var(--color-main);
+}
+
+.content-box h3:first-child {
+  margin-top: 0;
+}
+
+.step-list li {
+  margin-bottom: 8px;
+}
+
+.content-box code {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-main-soft);
+  color: var(--color-main);
+  font-size: 0.9em;
+}
+
+/* ---------------------------------------------------------
+   푸터
+   --------------------------------------------------------- */
+.site-footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   반응형 (미디어 쿼리)
+   --------------------------------------------------------- */
+/* 태블릿: 2열 */
+@media (max-width: 900px) {
+  .idea-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 모바일: 1열 */
+@media (max-width: 600px) {
+  .idea-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .idea-detail,
+  .content-box {
+    padding: 20px;
+  }
+
+  .idea-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .idea-pager {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}
