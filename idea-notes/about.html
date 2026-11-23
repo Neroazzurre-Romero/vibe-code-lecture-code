@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소개 | 바이브코딩 아이디어 노트</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 공통 헤더 -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="index.html">바이브코딩 아이디어 노트</a></h1>
+      <nav class="site-nav" aria-label="주 메뉴">
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="about.html" class="is-active" aria-current="page">소개</a></li>
+          <li><a href="template.html">템플릿</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+
+      <section class="page-intro">
+        <h2>이 사이트 소개</h2>
+        <p>아이디어를 잊지 않고, 바로 AI에게 맡길 수 있는 형태로 정리해 두는 곳입니다.</p>
+      </section>
+
+      <article class="content-box">
+
+        <section>
+          <h3>만든 목적</h3>
+          <p>떠오른 프로젝트 아이디어는 메모장, 메신저, 수첩에 흩어져 금방 잊힙니다. 이 사이트는 아이디어마다 페이지 하나를 만들고, 만들 이유·기능·기술·AI에게 줄 첫 프롬프트까지 같은 형식으로 정리해 둡니다. 나중에 아이디어를 꺼내 쓸 때 프롬프트를 그대로 복사해 바로 바이브코딩을 시작할 수 있습니다.</p>
+        </section>
+
+        <section>
+          <h3>새 아이디어를 추가하는 방법</h3>
+          <ol class="step-list">
+            <li><strong>템플릿 복사</strong> — <code>template.html</code> 파일을 복사해서 <code>ideas</code> 폴더에 붙여 넣습니다.</li>
+            <li><strong>이름 변경</strong> — 다음 번호로 이름을 바꿉니다. 예: <code>idea-04.html</code></li>
+            <li><strong>경로 수정</strong> — <code>ideas</code> 폴더 안으로 옮겼으므로, 파일 안의 링크 앞에 <code>../</code> 를 붙입니다. (템플릿 상단 주석에 고칠 곳이 적혀 있습니다.)</li>
+            <li><strong>내용 작성</strong> — 회색 안내 문구를 지우고 실제 내용을 적습니다. 다 쓰면 <code>class="placeholder"</code> 는 지워도 됩니다.</li>
+            <li><strong>목록에 카드 추가</strong> — <code>index.html</code> 에서 <code>&lt;article class="idea-card"&gt;</code> 하나를 복사해 붙이고 제목·요약·배지·링크를 바꿉니다.</li>
+            <li><strong>이전/다음 링크 연결</strong> — 바로 앞 아이디어 페이지의 "다음 아이디어 없음"을 새 페이지 링크로 바꿉니다.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>배지 클래스 정리</h3>
+          <ul>
+            <li><span class="status-badge status-idea">구상 중</span> → <code>status-idea</code></li>
+            <li><span class="status-badge status-dev">개발 중</span> → <code>status-dev</code></li>
+            <li><span class="status-badge status-done">완성</span> → <code>status-done</code></li>
+            <li>난이도는 <code>level-badge</code> 안의 글자만 쉬움 / 보통 / 어려움으로 바꿉니다.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>색 바꾸기</h3>
+          <p>모든 색은 <code>css/style.css</code> 맨 위 <code>:root</code> 에 모여 있습니다. 여기 값만 바꾸면 사이트 전체 색이 함께 바뀝니다.</p>
+        </section>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- 공통 푸터 -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 [작성자 이름] · 바이브코딩 아이디어 노트</p>
+    </div>
+  </footer>
+
+</body>
+</html>
